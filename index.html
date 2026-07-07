@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsClone</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand-bubble">WC</div>
+      <h1>WhatsClone</h1>
+      <p class="muted">Chat with usernames, not phone numbers.</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="tab active">Login</button>
+        <button id="signupTab" class="tab">Sign up</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <input id="loginUsername" placeholder="username" autocomplete="username" />
+        <input id="loginPassword" type="password" placeholder="password" autocomplete="current-password" />
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="signupForm" class="auth-form hidden">
+        <input id="signupDisplayName" placeholder="display name" autocomplete="name" />
+        <input id="signupUsername" placeholder="username: letters_numbers" autocomplete="username" />
+        <input id="signupPassword" type="password" placeholder="password" autocomplete="new-password" />
+        <button type="submit">Create account</button>
+      </form>
+
+      <div id="authError" class="error"></div>
+    </div>
+  </div>
+
+  <main id="app" class="app hidden">
+    <aside class="sidebar">
+      <header class="side-header">
+        <div class="me">
+          <div id="meAvatar" class="avatar">?</div>
+          <div>
+            <div id="meName" class="me-name">Loading</div>
+            <div id="meUser" class="me-user">@...</div>
+          </div>
+        </div>
+        <button id="logoutBtn" class="icon-btn" title="Logout">↪</button>
+      </header>
+
+      <div class="search-box">
+        <input id="searchInput" placeholder="Search or start new chat" />
+      </div>
+
+      <section id="searchResults" class="search-results hidden"></section>
+      <section id="conversationList" class="conversation-list"></section>
+    </aside>
+
+    <section class="chat-panel">
+      <div id="emptyChat" class="empty-chat">
+        <div class="empty-logo">💬</div>
+        <h2>WhatsClone Web</h2>
+        <p>Select a chat or search a username to start messaging.</p>
+      </div>
+
+      <div id="activeChat" class="active-chat hidden">
+        <header class="chat-header">
+          <button id="backBtn" class="back-btn">‹</button>
+          <div id="chatAvatar" class="avatar">?</div>
+          <div class="chat-person">
+            <div id="chatName" class="chat-name">Name</div>
+            <div id="chatStatus" class="chat-status">offline</div>
+          </div>
+        </header>
+
+        <div id="messages" class="messages"></div>
+        <div id="typingLine" class="typing-line hidden">typing...</div>
+
+        <form id="messageForm" class="message-form">
+          <button type="button" id="emojiBtn" class="round-btn">＋</button>
+          <input id="messageInput" placeholder="Type a message" autocomplete="off" />
+          <button type="submit" class="send-btn">➤</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
